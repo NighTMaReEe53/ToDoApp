@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --mainColor: #009688;
+  --mainBackGround: #FFF;
+  --trans: background 0.3s ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--mainColor);
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+
+
+body {
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  background-color: var(--mainBackGround);
+  transition: var(--trans);
+}
+
+.title {
+  font-size: 50px;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--mainColor);
+}
+
+.container {
+  width: 900px;
+  margin: 20px auto;
+}
+
+.todo-form {
+  background-color: #f6f6f6;
+  transition: var(--trans);
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  gap: 10px;
+}
+
+.todo-form.theDark {
+  background-color: #fff3;
+  border-radius: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.todo-form input {
+  width: 100%;
+  height: 54px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+  transition: 0.1s ease;
+  font-size: 15px;
+  outline: none;
+  caret-color: var(--mainColor);
+  color: #000;
+  font-weight: bold;
+}
+
+.todo-form.theDark input {
+  background-color: #fff3;
+  color: #FFF;
+}
+
+.todo-form.theDark input::placeholder {
+  color: #FFF;
+}
+
+.todo-form .add {
+  background-color: var(--mainColor);
+  height: 54px;
+  width: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #FFF;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.todo-form input:focus {
+  outline: 2px solid var(--mainColor);
+}
+
+.todo-form input:focus::placeholder {
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.tasks {
+  background-color: #e0e0e0;
+  transition: var(--trans);
+  padding: 20px;
+}
+
+.tasks.theDark {
+  background-color: #fff3;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.tasks .task,
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.tasks.theDark .task,
+.tasks.theDark .no-data {
+  background-color: #FFF3;
+  color: #FFF;
+}
+
+.tasks .task.done {
+  opacity: 0.5;
+  position: relative;
+}
+
+.tasks .task.done::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-1deg);
+  width: 100%;
+  background: #666;
+  height: 3px;
+  left: 0;
+}
+
+.no-data {
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #f05;
+}
+
+.tasks .task:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+
+.tasks .item {
+  display: flex;
+  gap: 10px;
+}
+
+
+.tasks .item h2 {
+  font-weight: bold;
+  color: #000;
+  font-size: 25px;
+  text-transform: capitalize;
+  user-select: none;
+}
+
+.tasks .task.done h2 {
+  margin-right: auto;
+}
+
+.tasks .item .edit,
+.tasks .item .delete {
+  padding: 4px;
+  width: 90px;
+  cursor: pointer;
+  text-align: center;
+  color: #FFF;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.tasks .task.done .item .edit,
+.tasks .task.done .item .delete {
+  pointer-events: none;
+}
+
+.tasks .item .edit {
+  background-color: var(--mainColor);
+}
+
+.tasks .item .delete {
+  background-color: #f05;
+}
+
+/* Responsive */
+
+@media(max-width:767px) {
+  .container {
+    width: 350px;
+  }
+
+  .task {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .tasks .task.done h2 {
+    margin: 0 auto;
+  }
+
+  .tasks .task.done::before {
+    transform: translateY(-50%) rotate(16deg);
+  }
+}
+
+.dark {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.dark .icon {
+  width: 40px;
+  height: 40px;
+  background-color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dark .moon {
+  display: none;
+}
+
+.dark.edition .sun {
+  display: none;
+}
+
+.dark.edition .moon {
+  display: flex;
+  background-color: #fff3;
+  color: #FFF;
+}
